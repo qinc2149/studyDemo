@@ -35,7 +35,7 @@ class Prodecer implements Runnable{
     @Override
     public void run() {
             try {
-                for(int i=0;i<10;i++){
+                for(int i=0;i<50;i++){
                     if(queue.offer(new QueueData("QINC",i+""),3, TimeUnit.MILLISECONDS)){
                         System.out.println("线程:"+Thread.currentThread().getId()+"插入数据成功！");
                     }else{
@@ -59,13 +59,13 @@ class Consumer implements Runnable{
     }
     @Override
     public void run() {
-       // while (true){
+        while (true){
             try {
                 System.out.println("线程："+Thread.currentThread().getId()+"消费数据"+queue.take());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-       // }
+        }
 
     }
 
