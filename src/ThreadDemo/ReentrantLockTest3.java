@@ -18,10 +18,14 @@ public class ReentrantLockTest3 {
         public void run() {
             for(int i=0;i<10;i++){
                 try {
-                    lock.tryLock(5, TimeUnit.SECONDS);//加锁
-                    System.out.println(Thread.currentThread().getName()+"获得锁");
-                    Thread.sleep(6000);
-                    j++;
+                    boolean isLock=lock.tryLock(5, TimeUnit.SECONDS);//加锁
+                    if(isLock){
+                        System.out.println(Thread.currentThread().getName()+"获得锁");
+                        Thread.sleep(111000);
+                        j++;
+                    }else{
+                        System.out.println(Thread.currentThread().getName()+"获得锁失败！");
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
