@@ -27,7 +27,7 @@ public class DelayMqTest {
      */
     @Test
     public void sendDelayMsg() throws IOException, TimeoutException {
-        byte[] messageBody = "有效期短的消息在队尾！".getBytes();
+        byte[] messageBody = "有效期短的消息在队尾！60".getBytes();
         //1.获取连接，创建信道
         Channel channel=RabbitMqUtils.getChannel();
         //申明 正常的exchange
@@ -40,14 +40,17 @@ public class DelayMqTest {
         arg.put("x-dead-letter-exchange", NORMAL_EXCHANGE_NAME);
         arg.put("x-dead-letter-routing-key", NORMAL_QUEUE_NAME);
         //创建一个队列，队列的消息过期时间为60秒
-        arg.put("x-message-ttl", 60000);
+       // arg.put("x-message-ttl", 60000);
+        arg.put("x-max-priority", 10);
         channel.queueDeclare(DELAY_QUEUE_NAME, false, false, false, arg);
         //将queue绑定到exchange
         channel.queueBind(DELAY_QUEUE_NAME,DELAY_EXCHANGE_NAME,DELAY_QUEUE_NAME);
 
         //发送消息，将该消息的过期时间，设置为2秒
         AMQP.BasicProperties.Builder builder = new AMQP.BasicProperties.Builder();
-        AMQP.BasicProperties properties = builder.expiration("10000").deliveryMode(2).build();
+        builder.priority(1000000000);
+        builder.expiration("60000").deliveryMode(2);
+        AMQP.BasicProperties properties = builder.build();
         channel.basicPublish(DELAY_EXCHANGE_NAME, DELAY_QUEUE_NAME, properties, messageBody);
         //关闭连接
         RabbitMqUtils.closeChannel();

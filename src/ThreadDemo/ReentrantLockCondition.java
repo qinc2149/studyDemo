@@ -39,6 +39,7 @@ public class ReentrantLockCondition {
         lock.lock();
         condition.signal();
         lock.unlock();
+        t1.join();
         System.out.println("主线程结束");
     }
 }
