@@ -56,6 +56,10 @@ public class DemoStream03 {
         OptionalInt optionalInt=transactions.stream().mapToInt(Transaction::getValue).max();
         System.out.println(optionalInt.orElse(1));
 
+        Optional<Transaction> trans= Optional.ofNullable(transactions.get(5));
+        trans.ifPresent(s->{
+            System.out.println(s.getValue());
+        });
 
     }
 }
@@ -103,4 +107,6 @@ class Transaction{
                 "year: "+this.year+", " +
                 "value:" + this.value +"}";
     }
+
+
 }

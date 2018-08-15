@@ -50,5 +50,7 @@ public class DemoStream05 {
         Stream.generate(Math::random).limit(5).forEach(System.out::println);
 
 
+
+
     }
 }
