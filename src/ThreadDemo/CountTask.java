@@ -27,6 +27,7 @@ public class CountTask extends RecursiveTask{
         protected Object compute() {
             long sum=0;
             boolean isCompute=(end-start)<THRESHOLD;
+            //任务足够小或者不可分
             if(isCompute){
                 for(long i=start;i<=end;i++){
                     sum+=i;

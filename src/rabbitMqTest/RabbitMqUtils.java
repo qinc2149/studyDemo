@@ -30,6 +30,7 @@ public class RabbitMqUtils {
         factory.setPort(5672);
         factory.setUsername("finance");
         factory.setPassword("ziroom1018");
+        factory.setAutomaticRecoveryEnabled(true);
         //2.获取连接,创建信道
         connection=factory.newConnection();
         channel= connection.createChannel();

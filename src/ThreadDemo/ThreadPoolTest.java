@@ -1,9 +1,6 @@
 package ThreadDemo;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * @author qinc
@@ -36,5 +33,8 @@ public class ThreadPoolTest {
             /*Future future= es.submit(new DivTask(i,100));
             future.get();*/
         }
+
+        ThreadPoolExecutor tp= (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
+        tp.getQueue();
     }
 }
