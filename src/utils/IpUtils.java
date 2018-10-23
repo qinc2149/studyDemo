@@ -1,5 +1,10 @@
 package utils;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+
 /**
  * @author qinc
  * @version V1.0
@@ -38,11 +43,38 @@ public class IpUtils {
       return sb.toString();
     }
 
+
+
+
+
+    public static String getHostIP() {
+        String IFCONFIG = null;
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf
+                        .getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()
+                            && !inetAddress.isLinkLocalAddress()
+                            && inetAddress.isSiteLocalAddress()
+                            &&inetAddress.getHostAddress().toString().indexOf("10") >= 0) {
+                        IFCONFIG = inetAddress.getHostAddress().toString();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+        }
+        return IFCONFIG;
+    }
     public static void main(String args[]){
-        "A".intern();
+      /*  "A".intern();
         System.out.println(ipToInt("10.0.27.63"));
         System.out.println(ipToStr(169745215));
         long result = (10L << (3 * 8))+(0L << (2 * 8))+(27L << (1 * 8))+(63L << (0 * 8));
         System.out.println(result);
+*/
+
+        System.out.println(getHostIP());
     }
 }

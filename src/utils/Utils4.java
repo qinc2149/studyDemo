@@ -1,5 +1,7 @@
 package utils;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.Collectors;
@@ -12,8 +14,9 @@ import java.util.stream.Collectors;
  */
 public class Utils4 {
     public static void main(String args[]){
+        System.out.println(Integer.parseInt("123"));
 
-        System.out.println(eqStr("aabc","caba"));
+       // System.out.println(eqStr("aabc","caba"));
     }
 
 

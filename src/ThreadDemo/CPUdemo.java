@@ -8,27 +8,11 @@ package ThreadDemo;
  */
 public class CPUdemo {
     public static void main (String args[]){
-        for(int i=0;i<30;i++){
-
-            new Thread(new Runnable(){
-                int j=0;
-                @Override
-                public void run() {
-                    //while(true){
-                            j++;
-                       //}
-
-
-
-                }
-            }).start();
-       /* int j=0;
-        while(true){
-            j++;
-        }*/
+        StringBuilder centreNm=new StringBuilder();
+        System.out.println(centreNm.toString().equals(""));
 
 
 
 
-    }}
+    }
 }

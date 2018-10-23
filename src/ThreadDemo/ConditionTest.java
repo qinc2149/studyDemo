@@ -56,7 +56,7 @@ public class ConditionTest {
                 lock.lock();
                 try {
                     while (true){
-                        if (pool.size()==10){
+                        if (pool.size()>0){
                             System.out.println("一次全部消费完了");
                             pool.clear();
                             System.out.println("通知工厂继续生产！");
