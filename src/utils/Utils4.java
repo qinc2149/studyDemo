@@ -14,9 +14,13 @@ import java.util.stream.Collectors;
  */
 public class Utils4 {
     public static void main(String args[]){
-        System.out.println(Integer.parseInt("123"));
+         Integer amount = null;
+       // System.out.println(Integer.parseInt("123"));
+        int tabIndex=getTabIndex(4,"10.16.25.67");
+        System.out.println(amount.intValue());
 
-       // System.out.println(eqStr("aabc","caba"));
+
+
     }
 
 
@@ -24,5 +28,18 @@ public class Utils4 {
         String a=Arrays.stream(s1.split("")).sorted().collect(Collectors.joining());
         String b=Arrays.stream(s2.split("")).sorted().collect(Collectors.joining());
         return a.equals(b);
+    }
+
+
+    /**
+     *
+     * @param h
+     * @param key
+     * @return
+     */
+    public static int getTabIndex(int h, String key){
+        int hash = (key.hashCode() ^ (key.hashCode() >>> h)) & 0x7fffffff;
+        int tabIndex=(h-1) & hash;
+        return tabIndex;
     }
 }

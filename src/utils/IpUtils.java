@@ -25,7 +25,6 @@ public class IpUtils {
         System.out.println("二进制表示："+sb.toString());
         return Integer.valueOf(sb.toString(),2);
 
-
     }
     public static String ipToStr(int ip){
         StringBuilder sb= new StringBuilder();
@@ -68,13 +67,13 @@ public class IpUtils {
         return IFCONFIG;
     }
     public static void main(String args[]){
-      /*  "A".intern();
-        System.out.println(ipToInt("10.0.27.63"));
-        System.out.println(ipToStr(169745215));
-        long result = (10L << (3 * 8))+(0L << (2 * 8))+(27L << (1 * 8))+(63L << (0 * 8));
-        System.out.println(result);
-*/
+        //"A".intern();
+        System.out.println(ipToInt("10.30.27.50"));
+        System.out.println(ipToStr(168827203));
+//        long result = (10L << (3 * 8))+(0L << (2 * 8))+(27L << (1 * 8))+(63L << (0 * 8));
+//        System.out.println(result);
 
-        System.out.println(getHostIP());
+
+        //System.out.println(getHostIP());
     }
 }
