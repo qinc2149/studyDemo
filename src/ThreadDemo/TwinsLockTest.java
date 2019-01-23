@@ -34,9 +34,9 @@ class Task implements Runnable{
         while (true){
             lock.lock();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(5000);
                 System.out.println(Thread.currentThread().getName());
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }finally {

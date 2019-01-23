@@ -17,7 +17,9 @@ public class ReentrantLockTest {
         public void run() {
             for(int i=0;i<1000000;i++){
                 lock.lock();//加锁
+                lock.lock();//加锁
                 j++;
+                lock.unlock();//释放锁
                 lock.unlock();//释放锁
             }
         }

@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author qinc
@@ -28,9 +29,10 @@ public class CountDownLatchDemo implements Runnable {
     public static void main(String args[]) throws InterruptedException {
         CountDownLatchDemo demo = new CountDownLatchDemo();
         ExecutorService exec = Executors.newFixedThreadPool(10);
-        for(int i=0;i<2;i++){
+        for(int i=0;i<10;i++){
             exec.submit(demo);
         }
+        TimeUnit.SECONDS.sleep(222);
         System.out.println(Thread.currentThread().getName()+"等待发射");
         downLatch.await();//等待倒计时器
         System.out.println(Thread.currentThread().getName()+"点火发射");
